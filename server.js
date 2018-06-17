@@ -1,16 +1,22 @@
+// Init
 const express = require('express');
 const app = express();
 
-// static is static
-app.use('/static', express.static('public'));
+// https://scotch.io/tutorials/easy-node-authentication-setup-and-local 
+// The main reason why I chose this over something like MSSQL or MySQL 
+// is the flexibility you obtain when using it. No rigid schema. If three 
+// months down the line you need a certain table to have an extra field, 
+// and this and that, you just change it and it ripples out from there on out.
 
-// views 
+// Views 
 app.set('view engine', 'ejs');
 
-// root
-app.get('/', (req, res) => (
-  res.render('pages/index')
-));
+// Static
+app.use('/static', express.static('public'));
 
-// server
+// App Controller
+app.use(require('./controllers'))
+
+// Server
+// https://www.youtube.com/watch?v=XxRuW1pfGTI&t=1s <- Find Similar
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
