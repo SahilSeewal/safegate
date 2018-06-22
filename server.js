@@ -3,6 +3,21 @@ const express  = require('express');
 const mongoose = require('mongoose');
 const configDB = require('./config/database.js');
 
+/**
+ * TODO
+ * [X] Finish GuestSchema to take email and password
+ * [] Create views for guest signup
+ * [] Install passport
+ * [] Install passport-local
+ * [] http://www.passportjs.org/docs/configure/
+ * [] http://www.passportjs.org/docs/username-password/
+ * [] Test new LocalStrategy with plaintext password
+ * [] Store password in database
+ * [] Drop database
+ * [] Install bcrypt-nodejs
+ */
+
+
 // Initialize Express as 'app'
 const app = express();
 
