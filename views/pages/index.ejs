@@ -1,22 +1,19 @@
 <!-- Include Header -->
 <% include ../partials/head %>
 
-  <div id="ht-tm-jumbotron">
-    <div class="jumbotron text-center bg-dark text-white mb-0 radius-0 ht-tm-jumbotron">
-      <div class="container">
-        <div class="ht-tm-header">
-          <h1 class="display-4 text-white">SafeGate</h1>
-          <div class="lead mb-3">Manage guest access for gated communities.</div>
-          <a class="btn btn-primary btn-lg my-2 mr-2 text-left btn-ht-dl-message">
-            <span>Sign up as Resident</span>
-          </a>
+<!-- Include Header -->
+<% include ../partials/nav %>
 
-          <a class="btn btn-outline-light btn-hover-text-light btn-lg my-2 text-left">
-            <span>Sign up as Guest</span>
-          </a>
-        </div>
-      <div>
+  <div class="jumbotron bg-white text-center">
+    <div class="container-fluid">
+      <h1 class="display-3">SafeGate</h1>
+      <p class="lead">Manage guest access for gated communities.</p>
+      <p class="lead">
+        <a class="btn btn-dark" href="/resident/signup" role="button">Sign up as Resident</a>
+        <a class="btn btn-outline-dark" href="/guest/signup">Sign up as Guest</a>
+      </p>
     </div>
+  </div>
 
 <!-- Include Footer -->
 <% include ../partials/footer %>

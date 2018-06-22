@@ -1,4 +1,5 @@
 // Init
+const path = require('path');
 const express  = require('express');
 const mongoose = require('mongoose');
 const configDB = require('./config/database.js');
@@ -15,6 +16,7 @@ const configDB = require('./config/database.js');
  * [] Store password in database
  * [] Drop database
  * [] Install bcrypt-nodejs
+ * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
  */
 
 
@@ -37,7 +39,8 @@ db.on('error', err => {
 app.set('view engine', 'ejs');
 
 // Static
-app.use('/static', express.static('public'));
+app.use('/static', express.static(path.join(__dirname, 'public')))
+// console.log(path.resolve(__dirname, './'))
 
 // App Controller
 app.use(require('./controllers'))
