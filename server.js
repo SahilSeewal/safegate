@@ -24,11 +24,12 @@ const dbConfig = require('./config/database.js');
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
  */
 
-// Middleware Layers
+// Bind application-level middleware to an instance of the app object
 app.use('/', require('./routes'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-// Global Configuration
+// Configure reserved names in the app settings table
+// https://expressjs.com/en/4x/api.html#app.set
 app.set('view engine', 'ejs');
 
 // Database
