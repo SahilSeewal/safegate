@@ -1,13 +1,18 @@
-// Init
-const path = require('path');
-const express  = require('express');
+// Require Modules
+const path     = require('path');
+const express  = require('express')
 const mongoose = require('mongoose');
-const configDB = require('./config/database.js');
+
+// Initialize Express
+const app      = express();
+
+// Require Database Configurations
+const dbConfig = require('./config/database.js');
 
 /**
  * TODO
  * [X] Finish GuestSchema to take email and password
- * [] Create views for guest signup
+ * [X] Create views for guest signup
  * [] Install passport
  * [] Install passport-local
  * [] http://www.passportjs.org/docs/configure/
@@ -19,31 +24,17 @@ const configDB = require('./config/database.js');
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
  */
 
+// Middleware Layers
+app.use('/', require('./routes'));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
-// Initialize Express as 'app'
-const app = express();
-
-// Database
-mongoose.connect(configDB.url);
-const db = mongoose.connection;
-
-db.once('open', () => {
-  console.log(`Connected to MongoDB on port ${db.port}`);
-});
-
-db.on('error', err => {
-  console.log(err)
-});
-
-// Views 
+// Global Configuration
 app.set('view engine', 'ejs');
 
-// Static
-app.use('/static', express.static(path.join(__dirname, 'public')))
-// console.log(path.resolve(__dirname, './'))
-
-// App Controller
-app.use(require('./controllers'))
+// Database
+mongoose.connect(dbConfig.url);
+mongoose.connection.once('open', dbConfig.open);
+mongoose.connection.on('error', dbConfig.error);
 
 // Server
 // https://www.youtube.com/watch?v=XxRuW1pfGTI&t=1s <- Find Similar
