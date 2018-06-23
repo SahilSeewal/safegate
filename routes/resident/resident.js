@@ -9,4 +9,8 @@ router.get('/signup', function(req, res) {
   res.render('pages/resident/signup')
 })
 
+router.post('/register', function(req, res) {
+  res.send('Resident Registered!')
+})
+
 module.exports = router;
