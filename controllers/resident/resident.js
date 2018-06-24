@@ -9,7 +9,8 @@ function signup(req, res) {
 }
 
 function register(req, res) {
-  res.send('Resident Registered!')
+  console.log(req.body)
+  res.json(req.body)
 }
 
 module.exports = {

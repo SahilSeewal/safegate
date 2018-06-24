@@ -27,7 +27,8 @@ const dbConfig = require('./config/database.js');
 
 // Bind application-level middleware to an instance of the app object
 app.use(morgan('dev'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Configure reserved names in the app settings table
