@@ -25,7 +25,6 @@ const dbConfig = require('./config/database.js');
  */
 
 // Bind application-level middleware to an instance of the app object
-app.use('/', require('./routes'));
 app.use(morgan('dev'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
@@ -37,6 +36,9 @@ app.set('view engine', 'ejs');
 mongoose.connect(dbConfig.url);
 mongoose.connection.once('open', dbConfig.open);
 mongoose.connection.on('error', dbConfig.error);
+
+// Routes
+app.use('/', require('./routes'));
 
 // Server
 // https://www.youtube.com/watch?v=XxRuW1pfGTI&t=1s <- Find Similar
