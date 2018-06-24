@@ -1,16 +1,9 @@
 const express = require('express');
 const router  = express.Router();
+const residentController = require('../../controllers/resident/resident')
 
-router.get('/', function(req, res) {
-  res.send('Resident Dashboard')
-})
-
-router.get('/signup', function(req, res) {
-  res.render('pages/resident/signup')
-})
-
-router.post('/register', function(req, res) {
-  res.send('Resident Registered!')
-})
+router.get('/', residentController.index);
+router.get('/signup', residentController.signup);
+router.post('/register', residentController.register);
 
 module.exports = router;
