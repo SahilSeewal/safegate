@@ -1,8 +1,9 @@
 // Require Modules
-const path     = require('path');
-const express  = require('express')
-const mongoose = require('mongoose');
-const morgan   = require('morgan');
+const path       = require('path');
+const express    = require('express')
+const mongoose   = require('mongoose');
+const morgan     = require('morgan');
+const bodyParser = require('body-parser');
 
 
 // Initialize Express
@@ -26,6 +27,7 @@ const dbConfig = require('./config/database.js');
 
 // Bind application-level middleware to an instance of the app object
 app.use(morgan('dev'));
+app.use(bodyParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Configure reserved names in the app settings table
