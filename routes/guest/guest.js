@@ -1,16 +1,11 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', function(req, res) {
-  res.send('Guest Dashboard')
-})
+// All request callbacks are handled in this controller file
+const guestController = require('../../controllers/guest/guest');
 
-router.get('/signup', function(req, res) {
-  res.render('pages/guest/signup')
-})
-
-router.post('/register', function(req, res) {
-  res.send('Guest Registered!')
-})
+router.get('/', guestController.index);
+router.get('/signup', guestController.signup);
+router.post('/register', guestController.register);
 
 module.exports = router;
