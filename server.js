@@ -2,6 +2,8 @@
 const path     = require('path');
 const express  = require('express')
 const mongoose = require('mongoose');
+const morgan   = require('morgan');
+
 
 // Initialize Express
 const app      = express();
@@ -24,6 +26,7 @@ const dbConfig = require('./config/database.js');
 
 // Bind application-level middleware to an instance of the app object
 app.use('/', require('./routes'));
+app.use(morgan('dev'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Configure reserved names in the app settings table
