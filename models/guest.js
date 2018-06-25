@@ -9,4 +9,6 @@ const GuestSchema = new Schema({
   accessGranted: [{location: String, expires: Date}]
 });
 
-const Guest = module.exports = mongoose.model('Guest', GuestSchema);
+const Guest = mongoose.model('Guest', GuestSchema);
+
+module.exports = Guest;
