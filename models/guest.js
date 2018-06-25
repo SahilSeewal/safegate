@@ -3,10 +3,12 @@ const bcrypt   = require('bcrypt-nodejs');
 const Schema   = mongoose.Schema;
 
 const GuestSchema = new Schema({
+  local: {
+    email: String,
+    password: String,
+  },
   firstName: String,
   lastName: String,
-  email: String,
-  password: String,
   accessGranted: [{location: String, expires: Date}]
 });
 

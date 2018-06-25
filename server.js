@@ -45,7 +45,11 @@ mongoose.connection.once('open', dbConfig.open);
 mongoose.connection.on('error', dbConfig.error);
 
 // Required for Passport:
-app.use(session({ secret: 'thisshoulddefinitelybechanged' }));
+app.use(session({ 
+  secret: 'thisshoulddefinitelybechanged',
+  resave: false,
+  saveUninitialized: true,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
