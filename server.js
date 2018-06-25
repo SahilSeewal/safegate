@@ -6,7 +6,6 @@ const morgan     = require('morgan');
 const bodyParser = require('body-parser');
 const passport   = require('passport');
 
-
 // Initialize Express
 const app      = express();
 
@@ -26,6 +25,8 @@ const dbConfig = require('./config/database.js');
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
  */
 
+require('./config/passport')(passport); // pass passport for configuration
+
 // Bind application-level middleware to an instance of the app object
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,6 +41,9 @@ app.set('view engine', 'ejs');
 mongoose.connect(dbConfig.url);
 mongoose.connection.once('open', dbConfig.open);
 mongoose.connection.on('error', dbConfig.error);
+
+// Required for Passport:
+app.use(passport.initialize());
 
 // Routes
 app.use('/', require('./routes'));
