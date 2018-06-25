@@ -6,6 +6,8 @@ function index(req, res) {
 }
 
 function getSignup(req, res) {
+  // TODO
+  // Change how this message renders in views/pages/guest/signup
   res.render('pages/guest/signup', { message: req.flash('signupMessage') })
 }
 
