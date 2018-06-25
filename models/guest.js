@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const bcrypt   = require('bcrypt-nodejs');
+const Schema   = mongoose.Schema;
 
 const GuestSchema = new Schema({
   firstName: String,
@@ -8,6 +9,16 @@ const GuestSchema = new Schema({
   password: String,
   accessGranted: [{location: String, expires: Date}]
 });
+
+// Generate hash for passwords
+GuestSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// Check if login password is valid
+GuestSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
 
 const Guest = mongoose.model('Guest', GuestSchema);
 
