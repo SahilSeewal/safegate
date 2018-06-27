@@ -3,10 +3,10 @@ const express = require('express');
 const router  = express.Router();
 
 // Require Controller
-const homeController = require('../controllers/index');
+const indexController = require('../controllers/index');
 
 // Index
-router.get('/', homeController.index);
+router.get('/', indexController.index);
 
 // Require all routes in the routes/<subdir>/ directory
 router.use('/guest', require('./guest/guest'));
