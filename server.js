@@ -5,14 +5,17 @@ const session    = require('express-session');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
 const bodyParser = require('body-parser');
-const passport   = require('passport');
 const flash      = require('connect-flash');
+const passport   = require('passport');
 
 // Initialize Express
 const app      = express();
 
 // Require Database Configurations
 const dbConfig = require('./config/database.js');
+
+// Pass Passport for configuration
+require('./config/passport')(passport); 
 
 /**
  * TODO
@@ -21,22 +24,15 @@ const dbConfig = require('./config/database.js');
  * [] Create Resident local strategy in config/passport
  */
 
-require('./config/passport')(passport); // pass passport for configuration
+// Configure reserved names in the app settings table
+// https://expressjs.com/en/4x/api.html#app.set
+app.set('view engine', 'ejs');
 
 // Bind application-level middleware to an instance of the app object
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'public')));
-
-// Configure reserved names in the app settings table
-// https://expressjs.com/en/4x/api.html#app.set
-app.set('view engine', 'ejs');
-
-// Database
-mongoose.connect(dbConfig.url);
-mongoose.connection.once('open', dbConfig.open);
-mongoose.connection.on('error', dbConfig.error);
 
 // Required for Passport:
 app.use(session({ 
@@ -47,6 +43,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+// Database
+mongoose.connect(dbConfig.url);
+mongoose.connection.once('open', dbConfig.open);
+mongoose.connection.on('error', dbConfig.error);
 
 // Routes
 app.use('/', require('./routes'));
