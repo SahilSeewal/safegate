@@ -5,7 +5,10 @@ const router  = express.Router();
 const guestController = require('../../controllers/guest/guest');
 
 router.get('/', guestController.index);
+
 router.get('/signup', guestController.getSignup);
 router.post('/signup', guestController.postSignup);
+
+router.get('/login', guestController.getLogin);
 
 module.exports = router;

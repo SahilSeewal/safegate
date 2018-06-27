@@ -19,8 +19,13 @@ function postSignup(req, res, next) {
   })(req, res, next)
 }
 
+function getLogin(req, res) {
+  res.render('pages/guest/login')
+}
+
 module.exports = {
   index: index,
   getSignup: getSignup,
-  postSignup: postSignup
+  postSignup: postSignup,
+  getLogin: getLogin,
 }
