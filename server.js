@@ -16,15 +16,9 @@ const dbConfig = require('./config/database.js');
 
 /**
  * TODO
- * [] Install passport
- * [] Install passport-local
- * [] http://www.passportjs.org/docs/configure/
- * [] http://www.passportjs.org/docs/username-password/
- * [] Test new LocalStrategy with plaintext password
- * [] Store password in database
- * [] Drop database
- * [] Install bcrypt-nodejs
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
+ * [] Create RESIDENT MODEL
+ * [] Create Resident local strategy in config/passport
  */
 
 require('./config/passport')(passport); // pass passport for configuration
