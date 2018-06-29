@@ -6,8 +6,11 @@ function index(req, res) {
 }
 
 function getSignup(req, res) {
-  // TODO
-  // Change how this message renders in views/pages/guest/signup
+  /**
+   * TODO
+   * Change how this message renders in views/pages/guest/signup
+   * Currently, I am just handling the message from the EJS file
+   */
   res.render('pages/guest/signup', { message: req.flash('signupMessage') })
 }
 
