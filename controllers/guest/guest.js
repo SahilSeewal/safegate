@@ -17,14 +17,36 @@ function getSignup(req, res) {
 
 function postSignup(req, res, next) {
   passport.authenticate('local-guest-signup', {
-    successRedirect : '/guest/', // redirect to the secure profile section
+    successRedirect : '/guest/', // redirect to guest dashboard
     failureRedirect : '/guest/signup', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
-  })(req, res, next)
+  })(req, res, next) // immediately invoke passport.authenticate
 }
 
 function getLogin(req, res) {
   res.render('pages/guest/login')
+}
+
+/**
+ * TODO
+ * Making a request to /guest/login does not allow
+ * me to log in whether or not I have successfully registered. 
+ * It has to be the way I'm passing this function.
+ */
+
+function postLogin(req, res, next) {
+  console.log("Hit login");
+  passport.authenticate('local-guest-signup', { 
+    failureRedirect: '/guest/login' 
+  })(req, res, next),
+  function(req, res) {
+    res.redirect('/guest');
+  };
+}
+
+function getLogout(req, res) {
+  req.logout();
+  res.redirect('/');
 }
 
 module.exports = {
@@ -32,4 +54,6 @@ module.exports = {
   getSignup: getSignup,
   postSignup: postSignup,
   getLogin: getLogin,
+  postLogin: postLogin,
+  getLogout: getLogout
 }
