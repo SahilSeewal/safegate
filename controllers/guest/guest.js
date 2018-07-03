@@ -34,14 +34,8 @@ function getLogin(req, res) {
  * It has to be the way I'm passing this function.
  */
 
-function postLogin(req, res, next) {
-  console.log("Hit login");
-  passport.authenticate('local-guest-signup', { 
-    failureRedirect: '/guest/login' 
-  })(req, res, next),
-  function(req, res) {
-    res.redirect('/guest');
-  };
+function postLogin(req, res) {
+  res.send(req.body.email);
 }
 
 function getLogout(req, res) {

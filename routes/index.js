@@ -7,6 +7,7 @@ const indexController = require('../controllers/index');
 
 // Index
 router.get('/', indexController.index);
+router.get('/amILoggedIn', indexController.amILoggedIn);
 
 // Require all routes in the routes/<subdir>/ directory
 router.use('/guest', require('./guest/guest'));

@@ -24,9 +24,9 @@ require('./config/passport')(passport);
  * [] Create Resident local strategy in config/passport
  */
 
-// Configure reserved names in the app settings table
-// https://expressjs.com/en/4x/api.html#app.set
+// Views
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Bind application-level middleware to an instance of the app object
 app.use(morgan('dev'));
