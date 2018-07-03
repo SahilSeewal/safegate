@@ -3,7 +3,7 @@ const passport = require('passport');
 const Guest = require('../../models/guest');
 
 function index(req, res) {
-  res.send('Guest Dashboard');
+  res.render('pages/guest/dashboard', { guestSignupMessage: req.flash('guestSignupSuccessMessage') });
 }
 
 function getSignup(req, res) {
@@ -12,7 +12,7 @@ function getSignup(req, res) {
    * Change how this message renders in views/pages/guest/signup
    * Currently, I am just handling the message from the EJS file
    */
-  res.render('pages/guest/signup', { message: req.flash('signupMessage') })
+  res.render('pages/guest/signup', { guestSignupMessage: req.flash('guestSignupFailureMessage') })
 }
 
 function postSignup(req, res, next) {
