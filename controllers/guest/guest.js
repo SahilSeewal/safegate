@@ -15,9 +15,9 @@ function getSignup(req, res) {
 // Handle Guest Registration POST Request
 function postSignup(req, res, next) {
   passport.authenticate('local-guest-signup', {
-    successRedirect : '/guest/', // redirect to guest dashboard
-    failureRedirect : '/guest/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect : '/guest/',
+    failureRedirect : '/guest/signup',
+    failureFlash : true
   })(req, res, next) // immediately invoke passport.authenticate
 }
 
@@ -26,16 +26,9 @@ function getLogin(req, res) {
   res.render('pages/guest/login')
 }
 
-/**
- * TODO
- * Making a request to /guest/login does not allow
- * me to log in whether or not I have successfully registered. 
- * It has to be the way I'm passing this function.
- */
-
 // Handle Guest Login POST Request
 function postLogin(req, res) {
-  res.send(req.body.email);
+  res.send(req.body);
 }
 
 // Hit this endpoint to log out current guest

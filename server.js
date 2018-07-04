@@ -20,8 +20,10 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
- * [] Create RESIDENT MODEL
- * [] Create Resident local strategy in config/passport
+ * [] Create 'local-guest-login' Passport authentication strategy
+ * [] Use 'local-guest-login' strategy for /guest/login POST request
+ * [] Conditionally render "Login" buttons in main nav based on req.user existing or not
+ * [] Protect all resident routes from Guest if guest is signed in
  */
 
 // Views
