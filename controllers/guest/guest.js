@@ -2,19 +2,17 @@ const express = require('express');
 const passport = require('passport');
 const Guest = require('../../models/guest');
 
+// Guest Index (Dashboard) Controller
 function index(req, res) {
   res.render('pages/guest/dashboard', { guestSignupMessage: req.flash('guestSignupSuccessMessage') });
 }
 
+// GET Guest Registration Page
 function getSignup(req, res) {
-  /**
-   * TODO
-   * Change how this message renders in views/pages/guest/signup
-   * Currently, I am just handling the message from the EJS file
-   */
   res.render('pages/guest/signup', { guestSignupMessage: req.flash('guestSignupFailureMessage') })
 }
 
+// Handle Guest Registration POST Request
 function postSignup(req, res, next) {
   passport.authenticate('local-guest-signup', {
     successRedirect : '/guest/', // redirect to guest dashboard
@@ -23,6 +21,7 @@ function postSignup(req, res, next) {
   })(req, res, next) // immediately invoke passport.authenticate
 }
 
+// GET Guest Login Page
 function getLogin(req, res) {
   res.render('pages/guest/login')
 }
@@ -34,15 +33,18 @@ function getLogin(req, res) {
  * It has to be the way I'm passing this function.
  */
 
+// Handle Guest Login POST Request
 function postLogin(req, res) {
   res.send(req.body.email);
 }
 
+// Hit this endpoint to log out current guest
 function getLogout(req, res) {
   req.logout();
   res.redirect('/');
 }
 
+// Export Controllers
 module.exports = {
   index: index,
   getSignup: getSignup,
