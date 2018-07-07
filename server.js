@@ -20,8 +20,8 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
- * [] Figure out why pages/guest/login flash messages are not propagating
  * [] create new branch for authenticated routes
+ * [] Protect all index routes from Guest if guest is signed in 
  * [] Protect all resident routes from Guest if guest is signed in
  */
 
