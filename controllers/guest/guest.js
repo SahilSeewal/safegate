@@ -53,7 +53,7 @@ function getUser(req, res) {
 }
 
 /** 
- * Route Authentication Middleware
+ * TODO Route Authentication Middleware
  * This function should be used to protect all private Guest routes
  * from users who are not logged in as a guest. I need to learn more
  * about redirects before finishing this.
