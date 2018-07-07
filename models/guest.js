@@ -9,7 +9,7 @@ const GuestSchema = new Schema({
   },
   firstName: String,
   lastName: String,
-  accessGranted: [{location: String, expires: Date}]
+  userGroup: String,
 });
 
 // Generate hash for passwords

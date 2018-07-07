@@ -4,12 +4,16 @@ const Guest = require('../../models/guest');
 
 // Guest Index (Dashboard) Controller
 function index(req, res) {
-  res.render('pages/guest/dashboard', { guestSignupMessage: req.flash('guestSignupSuccessMessage') });
+  res.render('pages/guest/dashboard', { 
+    guestSignupMessage: req.flash('guestSignupSuccessMessage'),
+  });
 }
 
 // GET Guest Registration Page
 function getSignup(req, res) {
-  res.render('pages/guest/signup', { guestSignupMessage: req.flash('guestSignupFailureMessage') });
+  res.render('pages/guest/signup', { 
+    guestSignupMessage: req.flash('guestSignupFailureMessage'),
+  });
 }
 
 // Handle Guest Registration POST Request
@@ -44,6 +48,10 @@ function getLogout(req, res) {
   res.redirect('/');
 }
 
+function getUser(req, res) {
+  res.send(req.user);
+}
+
 // Export Controllers
 module.exports = {
   index: index,
@@ -51,5 +59,6 @@ module.exports = {
   postSignup: postSignup,
   getLogin: getLogin,
   postLogin: postLogin,
-  getLogout: getLogout
+  getLogout: getLogout,
+  getUser: getUser
 }
