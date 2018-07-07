@@ -9,7 +9,7 @@ function index(req, res) {
 
 // GET Guest Registration Page
 function getSignup(req, res) {
-  res.render('pages/guest/signup', { guestSignupMessage: req.flash('guestSignupFailureMessage') })
+  res.render('pages/guest/signup', { guestSignupMessage: req.flash('guestSignupFailureMessage') });
 }
 
 // Handle Guest Registration POST Request
@@ -23,12 +23,19 @@ function postSignup(req, res, next) {
 
 // GET Guest Login Page
 function getLogin(req, res) {
-  res.render('pages/guest/login')
+  res.render('pages/guest/login', { 
+    guestLoginMessage: req.flash('noGuestEmailFoundOnLogin'),
+    guestLoginMessage: req.flash('incorrectGuestPassword')
+  });
 }
 
 // Handle Guest Login POST Request
-function postLogin(req, res) {
-  res.send(req.body);
+function postLogin(req, res, next) {
+  passport.authenticate('local-guest-login', {
+    successRedirect: '/guest/',
+    failureRedirect: '/guest/login',
+    failureFlash: true
+  })(req, res, next);
 }
 
 // Hit this endpoint to log out current guest
