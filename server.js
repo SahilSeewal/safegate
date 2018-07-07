@@ -23,6 +23,8 @@ require('./config/passport')(passport);
  * [] Create 'local-guest-login' Passport authentication strategy
  * [] Use 'local-guest-login' strategy for /guest/login POST request
  * [] Conditionally render "Login" buttons in main nav based on req.user existing or not
+ * [] merge all of guest-auth into master and delete guest-auth branch
+ * [] create new branch for authenticated routes
  * [] Protect all resident routes from Guest if guest is signed in
  */
 
