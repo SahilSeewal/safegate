@@ -24,8 +24,8 @@ function postSignup(req, res, next) {
 // GET Guest Login Page
 function getLogin(req, res) {
   res.render('pages/guest/login', { 
-    guestLoginMessage: req.flash('noGuestEmailFoundOnLogin'),
-    guestLoginMessage: req.flash('incorrectGuestPassword')
+    noGuestEmailFoundOnLogin: req.flash('noGuestEmailFoundOnLogin'),
+    incorrectGuestPassword: req.flash('incorrectGuestPassword')
   });
 }
 

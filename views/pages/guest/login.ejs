@@ -6,9 +6,16 @@
 
 <div class="container">
 
-  <% if (guestLoginMessage.length > 0) { %>
+  <% if (noGuestEmailFoundOnLogin.length > 0) { %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <%= guestSignupMessage %>
+      <%= noGuestEmailFoundOnLogin %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% } else if (incorrectGuestPassword.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= incorrectGuestPassword %>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>

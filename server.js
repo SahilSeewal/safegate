@@ -20,8 +20,7 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
- * [] Conditionally render "Logout" button in main nav based on req.user existing or not
- * [] merge all of guest-auth into master and delete guest-auth branch
+ * [] Figure out why pages/guest/login flash messages are not propagating
  * [] create new branch for authenticated routes
  * [] Protect all resident routes from Guest if guest is signed in
  */
