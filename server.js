@@ -20,9 +20,9 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
- * [] create new git branch to work on authenticated routes
- * [] Protect all index routes from Guest if guest is signed in 
- * [] Protect all resident routes from Guest if guest is signed in
+ * [] AUTHENTICATE ALL ROUTES
+ * [] Guests should only be able to access Guest routes
+ * [] Residents should only be able to access Resident routes
  */
 
 // Views
