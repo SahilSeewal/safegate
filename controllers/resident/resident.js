@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+const Guest = require('../../models/guest');
 
 function index(req, res) {
   res.send('Resident Dashboard')
