@@ -11,20 +11,6 @@ function redirectUserIfNotLoggedIn(req, res, next) {
   next();
 }
 
-function blockGuestFromResidentRoutes(req, res, next) {
-  if (req.user.userGroup === "Guest")
-    res.redirect('/guest');
-  next();
-}
-
-function blockResidentFromGuestRoutes(req, res, next) {
-  if (req.user.userGroup === "Resident")
-    res.redirect('/resident');
-  next();
-}
-
 module.exports = {
   redirectUserIfNotLoggedIn: redirectUserIfNotLoggedIn,
-  blockGuestFromResidentRoutes: blockGuestFromResidentRoutes,
-  blockResidentFromGuestRoutes: blockResidentFromGuestRoutes,
 }

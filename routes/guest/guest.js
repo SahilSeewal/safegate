@@ -26,5 +26,4 @@ router.get('/user'
 // TODO: This route is unprotected, "Can't set headers after they are sent"
 router.get('/logout', guestController.getLogout);
 
-
 module.exports = router;
