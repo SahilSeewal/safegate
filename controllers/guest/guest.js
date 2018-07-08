@@ -47,15 +47,17 @@ function postLogin(req, res, next) {
 
 // Hit this endpoint to log out current guest
 function getLogout(req, res) {
-  req.logout();
-  res.redirect('/');
+  req.session.destroy(function (err) {
+    res.clearCookie('connect.sid');
+    res.redirect('/'); 
+  });
 }
 
 function getUser(req, res) {
   res.send(req.user);
 }
 
-// Export Controllers
+// Export Guest Controllers
 module.exports = {
   index: index,
   getSignup: getSignup,

@@ -29,5 +29,5 @@ ResidentSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.localStrategy.password);
 };
 
-const Resident = mongoose.model('Resident', GuestSchema);
+const Resident = mongoose.model('Resident', ResidentSchema);
 module.exports = Resident;

@@ -1,0 +1,31 @@
+<!-- Include Header -->
+<% include ../../partials/head %>
+
+<!-- Include Header -->
+<% include ../../partials/navs/residentNav %>
+
+<div class="container">
+
+  <% if (residentSignupMessage.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= residentSignupMessage %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <% } else %>
+
+  <h1>Resident Dashboard</h1>
+  <p><strong>Name:</strong> <%= residentFirstName + " " + residentLastName %></p>
+  <p><strong>Email:</strong> <%= residentEmail %></p>
+  <p><strong>Address Line One:</strong> <%= residentAddressLineOne %></p>
+  <p><strong>Address Line Two:</strong> <%= residentAddressLineTwo %></p>
+  <p><strong>City:</strong> <%= residentCity %></p>
+  <p><strong>State:</strong> <%= residentState %></p>
+  <p><strong>Zip Code:</strong> <%= residentZipCode %></p>
+  
+</div>
+
+
+<!-- Include Footer -->
+<% include ../../partials/footer %>
