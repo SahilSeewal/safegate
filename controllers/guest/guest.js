@@ -6,7 +6,7 @@ const Guest = require('../../models/guest');
 function index(req, res) {
   res.render('pages/guest/dashboard', { 
     guestSignupMessage: req.flash('guestSignupSuccessMessage'),
-    guestEmail: req.user.local.email,
+    guestEmail: req.user.localStrategy.email,
     guestFirstName: req.user.firstName,
     guestLastName: req.user.lastName,
   });

@@ -3,7 +3,7 @@ const bcrypt   = require('bcrypt-nodejs');
 const Schema   = mongoose.Schema;
 
 const GuestSchema = new Schema({
-  local: {
+  localStrategy: {
     email: String,
     password: String,
   },
@@ -19,9 +19,8 @@ GuestSchema.methods.generateHash = function(password) {
 
 // Check if login password is valid
 GuestSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.local.password);
+  return bcrypt.compareSync(password, this.localStrategy.password);
 };
 
 const Guest = mongoose.model('Guest', GuestSchema);
-
 module.exports = Guest;
