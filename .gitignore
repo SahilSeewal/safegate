@@ -65,6 +65,3 @@ typings/
 
 # Serverless directories
 .serverless
-
-# Database
-config
