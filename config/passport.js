@@ -17,7 +17,7 @@ module.exports = function(passport) {
 
   passport.serializeUser(function (userObject, done) {
     // userObject could be a Guest or a Resident... eventually maybe an Admin also
-    let userGroup = "guest";
+    let userGroup = "guest"; // Default value, could be anything
     let userPrototype =  Object.getPrototypeOf(userObject);
     if (userPrototype === Guest.prototype) {
         userGroup = "guest";
@@ -54,7 +54,11 @@ module.exports = function(passport) {
     },
 
     function(req, email, password, done) {
-      // Potentially use process.nextTick here and pass "Guest.findOne" as the callback
+      
+      // asynchronous
+      // Guest.findOne wont fire unless data is sent back
+      process.nextTick(function() {
+
       Guest.findOne({ 'localStrategy.email' :  email }, function(err, guest) {
 
         // Return error on error
@@ -82,6 +86,7 @@ module.exports = function(passport) {
             return done(null, newGuest, req.flash('guestSignupSuccessMessage', 'Success!'));
           });
         }
+      })
       })
     }
   )); //END LOCAL-GUEST-SIGNUP
@@ -122,6 +127,10 @@ module.exports = function(passport) {
 
     function(req, email, password, done) {
 
+      // asynchronous
+      // Resident.findOne wont fire unless data is sent back
+      process.nextTick(function() {
+
       Resident.findOne({ 'localStrategy.email': email }, function(err, resident) {
 
         if (err)
@@ -151,6 +160,7 @@ module.exports = function(passport) {
             return done(null, newResident, req.flash('residentSignupSuccessMessage', 'Success!'));
           });
         }
+      })
       })
     }
   )); // END LOCAL-RESIDENT-SIGNUP

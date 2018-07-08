@@ -1,18 +1,30 @@
 /** 
- * TODO Route Authentication Middleware
- * This function should be used to protect all private Guest routes
- * from users who are not logged in as a guest. I need to learn more
- * about redirects before finishing this.
+ * TODO: Route Authentication Middleware
+ * 
+ * [] Users who are not logged in should not access Guest or Resident private routes
+ * [] Guests who are logged in should not access Resident private routes
+ * [] Residents who are logged in should not access Guest private routes
  */
-function authenticateLocalGuest(req, res, next) {
+function redirectUserIfNotLoggedIn(req, res, next) {
   if (!req.user)
-    res.redirect('/')
-  if (req.user.userGroup !== "Guest")
     res.redirect('back')
+  next();
+}
+
+function blockGuestFromResidentRoutes(req, res, next) {
   if (req.user.userGroup === "Guest")
-    next();
+    res.redirect('/guest');
+  next();
+}
+
+function blockResidentFromGuestRoutes(req, res, next) {
+  if (req.user.userGroup === "Resident")
+    res.redirect('/resident');
+  next();
 }
 
 module.exports = {
-  authenticateLocalGuest: authenticateLocalGuest
+  redirectUserIfNotLoggedIn: redirectUserIfNotLoggedIn,
+  blockGuestFromResidentRoutes: blockGuestFromResidentRoutes,
+  blockResidentFromGuestRoutes: blockResidentFromGuestRoutes,
 }
