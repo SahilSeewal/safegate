@@ -7,7 +7,7 @@
  */
 function redirectUserIfNotLoggedIn(req, res, next) {
   if (!req.user)
-    res.redirect('back')
+    res.redirect('back');
   next();
 }
 
