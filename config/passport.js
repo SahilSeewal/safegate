@@ -1,6 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 const Guest         = require('../models/guest');
-const Resident         = require('../models/resident');
+const Resident      = require('../models/resident');
 
 // Understanding Serialize/Deserialize: https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize 
 // Github issue serializing two different LOCAL strategies: https://github.com/jaredhanson/passport/issues/50 
