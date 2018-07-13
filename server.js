@@ -23,6 +23,7 @@ require('./config/passport')(passport);
  * [] AUTHENTICATE ALL ROUTES
  * [] Guests should only be able to access Guest routes
  * [] Residents should only be able to access Resident routes
+ * [] Add https://github.com/motdotla/dotenv
  */
 
 // Views

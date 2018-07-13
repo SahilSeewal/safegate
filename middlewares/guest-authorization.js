@@ -1,5 +1,5 @@
 /** 
- * TODO: Route Authentication Middleware
+ * Route Authentication Middleware
  * 
  * [] Users who are not logged in should not access Guest or Resident private routes
  * [] Guests who are logged in should not access Resident private routes
