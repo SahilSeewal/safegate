@@ -5,23 +5,17 @@ const router  = express.Router();
 const guestController = require('../../controllers/guest/guest');
 
 // Route Protection
-const authenticateRoutes = require('../../middlewares/guest-authorization');
+const routeAuth = require('../../middlewares/route-auth');
 
 // Public Guest Routes:
-router.get('/signup', guestController.getSignup);
-router.post('/signup', guestController.postSignup);
-router.get('/login', guestController.getLogin);
-router.post('/login', guestController.postLogin);
+router.get('/signup', routeAuth.isNotUser, guestController.getSignup);
+router.post('/signup', routeAuth.isNotUser, guestController.postSignup);
+router.get('/login', routeAuth.isNotUser, guestController.getLogin);
+router.post('/login', routeAuth.isNotUser, guestController.postLogin);
 
 // Protected Guest Routes:
-router.get('/'
-  , authenticateRoutes.redirectUserIfNotLoggedIn
-  , guestController.index
-);
-router.get('/user'
-  , authenticateRoutes.redirectUserIfNotLoggedIn
-  , guestController.getUser
-);
+router.get('/', routeAuth.isGuest, guestController.index);
+router.get('/user', routeAuth.isGuest, guestController.getUser);
 
 // TODO: This route is unprotected, "Can't set headers after they are sent"
 router.get('/logout', guestController.getLogout);

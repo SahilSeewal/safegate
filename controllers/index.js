@@ -6,7 +6,7 @@ function index(req, res) {
 
 function amILoggedIn(req, res) {
   if (req.user) {
-    res.send('Logged in!');
+    res.json(req.user);
   } else {
     res.send('NOT Logged in!');
   }
