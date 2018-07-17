@@ -17,7 +17,4 @@ router.post('/login', routeAuth.isNotUser, guestController.postLogin);
 router.get('/', routeAuth.isGuest, guestController.index);
 router.get('/user', routeAuth.isGuest, guestController.getUser);
 
-// TODO: This route is unprotected, "Can't set headers after they are sent"
-router.get('/logout', guestController.getLogout);
-
 module.exports = router;

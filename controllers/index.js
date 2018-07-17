@@ -1,7 +1,7 @@
 const express = require('express');
 
 function index(req, res) {
-  res.render('pages/index')
+  res.render('pages/index', { user: req.user });
 }
 
 function amILoggedIn(req, res) {
@@ -12,7 +12,15 @@ function amILoggedIn(req, res) {
   }
 }
 
+function getLogout(req, res) {
+  req.session.destroy(function (err) {
+    res.clearCookie('connect.sid');
+    res.redirect('/'); 
+  });
+}
+
 module.exports = {
   index: index,
-  amILoggedIn: amILoggedIn
+  amILoggedIn: amILoggedIn,
+  getLogout: getLogout
 }
