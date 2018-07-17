@@ -1,7 +1,7 @@
 const express = require('express');
 
 function index(req, res) {
-  res.render('pages/index', { user: req.user });
+  res.render('pages/index', { userExists: req.user });
 }
 
 function amILoggedIn(req, res) {

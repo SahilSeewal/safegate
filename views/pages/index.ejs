@@ -2,7 +2,11 @@
 <% include ../partials/head %>
 
 <!-- Include Header -->
-<% include ../partials/navs/nav %>
+<% if (userExists) { %>
+  <% include ../partials/navs/userNav %>
+<% } else { %>
+  <% include ../partials/navs/nav %>
+<% } %>
 
   <div class="jumbotron bg-white text-center">
     <div class="container-fluid">
