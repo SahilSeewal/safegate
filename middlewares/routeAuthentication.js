@@ -2,7 +2,7 @@
  * Route Authentication Middleware
  */
 
-function isUser(req, res, next) {
+function isLoggedIn(req, res, next) {
 
 }
 
@@ -50,7 +50,7 @@ function isNotResident(req, res, next) {
 }
 
 module.exports = {
-  isUser: isUser,
+  isLoggedIn: isLoggedIn,
   isNotLoggedIn: isNotLoggedIn,
   isGuest: isGuest,
   isNotGuest: isNotGuest,
