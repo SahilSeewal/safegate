@@ -2,6 +2,8 @@
  * Route Authentication Middleware
  */
 
+// For routes that we do want only guests or residents to enter, and 
+// you do need to be a certain user for access.
 function isLoggedIn(req, res, next) {
 
 }
@@ -22,11 +24,11 @@ function isResident(req, res, next) {
   next();
 }
 
-// These are for routes that we do not want guests or residents to enter, but you also
+// For routes that we do not want guests or residents to enter, but you also
 // do not need to be a certain user for access.
 function isNotLoggedIn(req, res, next) {
   if (req.user) {
-    req.flash('doNotAllowSignUp', 'You cannot do that while logged in!')
+    req.flash('doNotAllowSignUp', 'You cannot do that while logged in.')
     res.redirect('back');
     return
   }
