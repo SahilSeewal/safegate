@@ -24,8 +24,9 @@ function isResident(req, res, next) {
 
 // These are for routes that we do not want guests or residents to enter, but you also
 // do not need to be a certain user for access.
-function isNotUser(req, res, next) {
+function isNotLoggedIn(req, res, next) {
   if (req.user) {
+    req.flash('doNotAllowSignUp', 'You cannot do that while logged in!')
     res.redirect('back');
     return
   }
@@ -50,7 +51,7 @@ function isNotResident(req, res, next) {
 
 module.exports = {
   isUser: isUser,
-  isNotUser: isNotUser,
+  isNotLoggedIn: isNotLoggedIn,
   isGuest: isGuest,
   isNotGuest: isNotGuest,
   isResident: isResident,

@@ -1,7 +1,11 @@
 const express = require('express');
 
 function index(req, res) {
-  res.render('pages/index', { userExists: req.user });
+  res.render('pages/index', { 
+    // Available View Template Variables
+    userExists: req.user, 
+    doNotAllowSignUp: req.flash('doNotAllowSignUp') 
+  });
 }
 
 function amILoggedIn(req, res) {

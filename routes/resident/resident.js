@@ -5,16 +5,16 @@ const router  = express.Router();
 const residentController = require('../../controllers/resident/resident');
 
 // Route Protection
-const routeAuth = require('../../middlewares/route-auth');
+const ensureUser = require('../../middlewares/routeAuthentication');
 
 // Public Resident Routes
-router.get('/signup', routeAuth.isNotUser, residentController.getSignup);
-router.post('/signup', routeAuth.isNotUser, residentController.postSignup);
-router.get('/login', routeAuth.isNotUser, residentController.getLogin);
-router.post('/login', routeAuth.isNotUser, residentController.postLogin);
+router.get('/signup', ensureUser.isNotLoggedIn, residentController.getSignup);
+router.post('/signup', ensureUser.isNotLoggedIn, residentController.postSignup);
+router.get('/login', ensureUser.isNotLoggedIn, residentController.getLogin);
+router.post('/login', ensureUser.isNotLoggedIn, residentController.postLogin);
 
 // Protected Resident Routes
-router.get('/', routeAuth.isResident, residentController.index);
-router.get('/user', routeAuth.isResident, residentController.getUser);
+router.get('/', ensureUser.isResident, residentController.index);
+router.get('/user', ensureUser.isResident, residentController.getUser);
 
 module.exports = router;
