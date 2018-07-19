@@ -41,6 +41,9 @@ app.use(session({
   secret: 'thisshoulddefinitelybechanged',
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
