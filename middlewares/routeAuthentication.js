@@ -4,10 +4,6 @@
 
 // For routes that we do want only guests or residents to enter, and 
 // you do need to be a certain user for access.
-function isLoggedIn(req, res, next) {
-
-}
-
 function isGuest(req, res, next) {
   if (!(req.user.userGroup === 'Guest')) {
     res.redirect('back');
@@ -35,27 +31,11 @@ function isNotLoggedIn(req, res, next) {
   next();
 }
 
-function isNotGuest(req, res, next) {
-  if (req.user.userGroup === 'Guest') {
-    res.redirect('back');
-    return
-  }
-  next();
-}
-
-function isNotResident(req, res, next) {
-  if (req.user.userGroup === 'Resident') {
-    res.redirect('back');
-    return
-  }
-  next();
-}
-
 module.exports = {
-  isLoggedIn: isLoggedIn,
+  // isLoggedIn: isLoggedIn,
   isNotLoggedIn: isNotLoggedIn,
   isGuest: isGuest,
-  isNotGuest: isNotGuest,
+  // isNotGuest: isNotGuest,
   isResident: isResident,
-  isNotResident: isNotResident
+  // isNotResident: isNotResident
 }
