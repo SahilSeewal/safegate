@@ -8,11 +8,11 @@
 const mongoose = require('mongoose');
 const url = "mongodb://safegate:safegate@127.0.0.1:27017/safegate";
 
-function open() {
+const open = function open() {
   console.log(`Connected to MongoDB on port ${mongoose.connection.port}`);
 }
 
-function error(err) {
+const error = function error(err) {
   console.log(err);
 }
 
