@@ -20,10 +20,14 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
- * [] AUTHENTICATE ALL ROUTES
- * [] Guests should only be able to access Guest routes
- * [] Residents should only be able to access Resident routes
+ * [] Continue to authenticate routes
+ * [] Set up form validation with express-validator
+ * [] Set up password reset functionality
  * [] Add https://github.com/motdotla/dotenv
+ * [] Add as much database dependent functionality as possible
+ * [] Deploy to safegate.mjvolk.com 
+ * [] Set up continuous deployment
+ * [] Set up continuous integration
  */
 
 // Views
