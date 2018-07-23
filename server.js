@@ -9,10 +9,10 @@ const flash      = require('connect-flash');
 const passport   = require('passport');
 
 // Initialize Express
-const app      = express();
+const app        = express();
 
 // dotenv
-require('dotenv').config();
+require('dotenv').config({path: path.join(__dirname, ".env")});
 
 // Pass Passport for configuration
 require('./config/passport')(passport); 
