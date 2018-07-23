@@ -11,8 +11,8 @@ const passport   = require('passport');
 // Initialize Express
 const app      = express();
 
-// Require Database Configurations
-const dbConfig = require('./config/database.js');
+// dotenv
+require('dotenv').config();
 
 // Pass Passport for configuration
 require('./config/passport')(passport); 
@@ -28,6 +28,7 @@ require('./config/passport')(passport);
  * [] Deploy to safegate.mjvolk.com 
  * [] Set up continuous deployment
  * [] Set up continuous integration
+ * [] Set up validation so user cannot submit form without all fields entered
  */
 
 // Views
@@ -53,10 +54,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// Database
-mongoose.connect(dbConfig.url);
-mongoose.connection.once('open', dbConfig.open);
-mongoose.connection.on('error', dbConfig.error);
+mongoose.connect(process.env.MONGO_URI)
+  .then(connection => {
+      console.log(`Connected to MongoDB on port ${mongoose.connection.port}`)
+  })
+  .catch(error => {
+    console.log(error.message)
+  });
 
 // Routes
 app.use('/', require('./routes'));
