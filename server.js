@@ -20,6 +20,8 @@ require('./config/passport')(passport);
 /**
  * TODO
  * [] https://www.caffeinecoding.com/better-express-routing-for-nodejs/
+ * [] https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+ * [] https://hackernoon.com/continuous-deployment-for-node-js-on-digitalocean-d800e8520ffe
  * [] Continue to authenticate routes
  * [] Set up form validation with express-validator
  * [] Set up password reset functionality
