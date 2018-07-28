@@ -31,6 +31,7 @@ require('./config/passport')(passport);
  * [] Set up continuous deployment
  * [] Set up continuous integration
  * [] Set up validation so user cannot submit form without all fields entered
+ * [] https://github.com/expressjs/session/issues/524
  */
 
 // Views
