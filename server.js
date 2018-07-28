@@ -45,7 +45,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Required for Passport:
 app.use(session({ 
-  secret: 'thisshoulddefinitelybechanged',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
