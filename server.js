@@ -39,10 +39,16 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Bind application-level middleware to an instance of the app object
-app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'public')));
+
+// NOTE: Express app.get('env') returns 'development' if NODE_ENV is not defined.
+if (app.get('env') === 'production') {
+  app.use(morgan('combined'));
+} else {
+  app.use(morgan('dev'));
+}
 
 // Required for Passport:
 app.use(session({ 
