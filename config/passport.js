@@ -10,8 +10,8 @@ const Resident      = require('../models/resident');
  * Todo: create docs for this function
  * 
  * @param {*} userId 
- * @param {*} userGroup 
- * @param {*} details 
+ * @param {String} userGroup Multi User identifier
+ * @param {String} details Add comments to remember this user type
  */
 function SessionConstructor(userId, userGroup, details) {
   this.userId = userId;
