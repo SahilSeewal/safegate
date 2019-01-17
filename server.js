@@ -27,7 +27,6 @@ require('./config/passport')(passport);
  * [] Set up password reset functionality
  * [x] Add https://github.com/motdotla/dotenv
  * [] Add as much database dependent functionality as possible
- * [] Deploy to safegate.mjvolk.com 
  * [] Set up continuous deployment
  * [] Set up continuous integration
  * [] Set up validation so user cannot submit form without all fields entered
