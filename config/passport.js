@@ -6,7 +6,13 @@ const Resident      = require('../models/resident');
 // Github issue serializing two different LOCAL strategies: https://github.com/jaredhanson/passport/issues/50 
 // How to solve: https://stackoverflow.com/a/24336272/8211101
 
-// I added that solution here: https://github.com/jaredhanson/passport/issues/50
+/**
+ * Todo: create docs for this function
+ * 
+ * @param {*} userId 
+ * @param {*} userGroup 
+ * @param {*} details 
+ */
 function SessionConstructor(userId, userGroup, details) {
   this.userId = userId;
   this.userGroup = userGroup;
