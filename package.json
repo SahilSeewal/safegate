@@ -4,8 +4,7 @@
   "description": "Manage guest access for gated communities.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "mongod && nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Matthew J. Volk",
   "license": "UNLICENSED",
