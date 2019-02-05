@@ -1,7 +1,6 @@
 # Safegate
 ![safegate-gif](https://i.imgur.com/lxdN9YG.gif)
 
----
 A Node.js application using Passport.js to handle multiple local user authentication strategies
 
 ## Prerequisites
